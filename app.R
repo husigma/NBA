@@ -1,9 +1,9 @@
 library(shiny)
-library(RMySQL)
+#library(RMySQL)
 require(tidyverse)
 library(dplyr)
 library(janitor)
-library(plotly)
+#library(plotly)
 
 # # 3. Read data from db
 # mydb <-  dbConnect(MySQL(), user = db_user, password = db_password,
