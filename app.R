@@ -1,6 +1,6 @@
 library(shiny)
 #library(RMySQL)
-require(tidyverse)
+#require(tidyverse)
 library(dplyr)
 library(janitor)
 #library(plotly)
@@ -31,7 +31,7 @@ library(janitor)
 # data <- merge(game, home, by.x = 'ID', by.y = 'ID', sort = TRUE)
 #   data <- merge(data, away, by.x = 'ID', by.y = 'ID', sort = TRUE)
 
-data<- readRDS('NBA.rds')  
+data<- read.csv('NBA_data.csv', header = TRUE, sep = ',')
 
 data <- data %>%clean_names()%>%
           filter(!home_team %in% c('USA','WST','GNS'))
