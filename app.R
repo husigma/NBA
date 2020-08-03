@@ -4,6 +4,7 @@ library(shiny)
 library(dplyr)
 library(janitor)
 #library(plotly)
+library(ggplot2)
 
 # # 3. Read data from db
 # mydb <-  dbConnect(MySQL(), user = db_user, password = db_password,
