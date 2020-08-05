@@ -7,6 +7,8 @@ library(janitor)
 library(ggplot2)
 library(shinydashboard)
 
+options(shiny.sanitize.errors = FALSE)
+
 # # 3. Read data from db
 # mydb <-  dbConnect(MySQL(), user = db_user, password = db_password,
 #                    dbname = db_name, host = db_host, port = db_port)
