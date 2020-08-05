@@ -5,6 +5,7 @@ library(dplyr)
 library(janitor)
 #library(plotly)
 library(ggplot2)
+library(shinydashboard)
 
 # # 3. Read data from db
 # mydb <-  dbConnect(MySQL(), user = db_user, password = db_password,
@@ -37,28 +38,27 @@ data<- read.csv('NBA_data.csv', header = TRUE, sep = ',')
 data <- data %>%clean_names()%>%
           filter(!home_team %in% c('USA','WST','GNS'))
 
-# Define UI for app that draws a histogram ----
-ui <- fluidPage(
-  # App title ----
-  titlePanel("NBA Data"),
-  # Sidebar layout with input and output definitions ----
-  sidebarLayout(
-    sidebarPanel(
-      selectInput( 'home_team', 'Pick the Home team:', unique(data$home_team))
-    ), 
-    mainPanel(
-      tabsetPanel(
-        tabPanel('Graph',
-      plotOutput('graphy')
+ui <- dashboardPage(
+  dashboardHeader(
+    title = 'NBA Data'
+  ),
+  dashboardSidebar(
+    selectInput('home_team', 'Pick the Home team:', unique(data$home_team)
+                )
+  ),
+  dashboardBody(
+    tabsetPanel(
+      tabPanel('Graph',
+               plotOutput('graphy')
       ),
       tabPanel('Table',
-      dataTableOutput('table' ),
-      textOutput("text")
-      )
+               dataTableOutput('table' ),
+               textOutput("text")
       )
     )
   )
 )
+
 #Define server logic required to draw a histogram ----
 server <- function(input, output) {
   
